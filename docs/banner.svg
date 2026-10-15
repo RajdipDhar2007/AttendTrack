@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="360" viewBox="0 0 1200 360">
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0" stop-color="#0B1020"/>
+<stop offset="1" stop-color="#150B2E"/>
+</linearGradient>
+<linearGradient id="title" x1="0" y1="0" x2="1" y2="0">
+<stop offset="0" stop-color="#38BDF8"><animate attributeName="stop-color" values="#38BDF8;#A78BFA;#F472B6;#34D399;#38BDF8" dur="8s" repeatCount="indefinite"/></stop>
+<stop offset="1" stop-color="#F472B6"><animate attributeName="stop-color" values="#F472B6;#34D399;#38BDF8;#A78BFA;#F472B6" dur="8s" repeatCount="indefinite"/></stop>
+</linearGradient>
+<linearGradient id="ring" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0" stop-color="#34D399"/>
+<stop offset="1" stop-color="#38BDF8"/>
+</linearGradient>
+<linearGradient id="card" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#fff" stop-opacity="0.14"/>
+<stop offset="1" stop-color="#fff" stop-opacity="0.04"/>
+</linearGradient>
+<linearGradient id="shine" x1="0" y1="0" x2="1" y2="0">
+<stop offset="0" stop-color="#fff" stop-opacity="0"/>
+<stop offset="0.5" stop-color="#fff" stop-opacity="0.28"/>
+<stop offset="1" stop-color="#fff" stop-opacity="0"/>
+</linearGradient>
+<pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+<path d="M40 0H0V40" fill="none" stroke="#fff" stroke-opacity="0.05"/>
+</pattern>
+<filter id="blur" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="45"/></filter>
+<filter id="glow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+<clipPath id="frame"><rect width="1200" height="360" rx="30"/></clipPath>
+</defs>
+
+<g clip-path="url(#frame)">
+<rect width="1200" height="360" fill="url(#bg)"/>
+
+<!-- aurora blobs -->
+<g filter="url(#blur)" opacity="0.65">
+<circle r="130" fill="#6366F1"><animateMotion dur="16s" repeatCount="indefinite" path="M180,90 C420,330 780,20 1020,250 C780,60 420,300 180,90"/></circle>
+<circle r="110" fill="#EC4899"><animateMotion dur="20s" repeatCount="indefinite" path="M1040,70 C760,300 320,30 140,270 C340,40 780,320 1040,70"/></circle>
+<circle r="100" fill="#06B6D4"><animateMotion dur="24s" repeatCount="indefinite" path="M600,330 C300,150 900,60 600,330"/></circle>
+</g>
+
+<rect width="1200" height="360" fill="url(#grid)"/>
+
+<!-- floating particles -->
+<g fill="#fff">
+<circle cx="90" cy="300" r="2.5" opacity="0.6"><animate attributeName="cy" values="320;40" dur="9s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;0.7;0" dur="9s" repeatCount="indefinite"/></circle>
+<circle cx="300" cy="320" r="2" opacity="0.6"><animate attributeName="cy" values="340;30" dur="12s" begin="2s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;0.7;0" dur="12s" begin="2s" repeatCount="indefinite"/></circle>
+<circle cx="560" cy="330" r="3" opacity="0.6"><animate attributeName="cy" values="350;20" dur="10s" begin="1s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;0.7;0" dur="10s" begin="1s" repeatCount="indefinite"/></circle>
+<circle cx="860" cy="320" r="2" opacity="0.6"><animate attributeName="cy" values="340;30" dur="11s" begin="3s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;0.7;0" dur="11s" begin="3s" repeatCount="indefinite"/></circle>
+<circle cx="1110" cy="310" r="2.5" opacity="0.6"><animate attributeName="cy" values="330;40" dur="13s" begin="4s" repeatCount="indefinite"/><animate attributeName="opacity" values="0;0.7;0" dur="13s" begin="4s" repeatCount="indefinite"/></circle>
+</g>
+
+<!-- left: progress ring -->
+<g transform="translate(190 180)">
+<g>
+<animateTransform attributeName="transform" type="translate" values="0 0;0 -8;0 0" dur="5s" repeatCount="indefinite"/>
+<circle r="92" fill="url(#card)" stroke="#fff" stroke-opacity="0.18"/>
+<circle r="68" fill="none" stroke="#fff" stroke-opacity="0.12" stroke-width="12"/>
+<circle r="68" fill="none" stroke="url(#ring)" stroke-width="12" stroke-linecap="round" transform="rotate(-90)" stroke-dasharray="427" filter="url(#glow)">
+<animate attributeName="stroke-dashoffset" values="427;96;96;427" keyTimes="0;0.4;0.85;1" dur="6s" repeatCount="indefinite"/>
+</circle>
+<text y="8" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="34" font-weight="800" fill="#fff">77.5%</text>
+<text y="34" text-anchor="middle" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="13" fill="#fff" fill-opacity="0.7" letter-spacing="2">ATTENDED</text>
+</g>
+</g>
+
+<!-- center: title -->
+<g font-family="Segoe UI, Helvetica, Arial, sans-serif" text-anchor="middle">
+<text x="600" y="170" font-size="88" font-weight="800" letter-spacing="1" fill="url(#title)" filter="url(#glow)">AttendTrack
+<animate attributeName="opacity" values="0;1" dur="1.2s" fill="freeze"/></text>
+<text x="600" y="215" font-size="25" fill="#E2E8F0" letter-spacing="1">Bunk smart  ·  Recover fast  ·  Never fall below target
+<animate attributeName="opacity" values="0;1" begin="0.6s" dur="1.2s" fill="freeze"/></text>
+<g opacity="0.95">
+<rect x="456" y="246" width="288" height="36" rx="18" fill="#fff" fill-opacity="0.08" stroke="#fff" stroke-opacity="0.2"/>
+<circle cx="480" cy="264" r="5" fill="#34D399"><animate attributeName="opacity" values="1;0.2;1" dur="1.6s" repeatCount="indefinite"/></circle>
+<text x="606" y="270" font-size="15" fill="#fff" letter-spacing="2">KOTLIN · COMPOSE · GEMINI AI</text>
+</g>
+</g>
+
+<!-- right: floating cards -->
+<g font-family="Segoe UI, Helvetica, Arial, sans-serif">
+<g transform="translate(930 92)">
+<animateTransform attributeName="transform" type="translate" values="930 92;930 100;930 92" dur="4.5s" repeatCount="indefinite"/>
+<rect width="210" height="64" rx="16" fill="url(#card)" stroke="#fff" stroke-opacity="0.18"/>
+<text x="18" y="27" font-size="13" fill="#fff" fill-opacity="0.7">Can I bunk tomorrow?</text>
+<text x="18" y="50" font-size="19" font-weight="700" fill="#34D399">Yes · 3 safe bunks</text>
+</g>
+<g transform="translate(960 176)">
+<animateTransform attributeName="transform" type="translate" values="960 176;960 168;960 176" dur="5.5s" repeatCount="indefinite"/>
+<rect width="190" height="64" rx="16" fill="url(#card)" stroke="#fff" stroke-opacity="0.18"/>
+<text x="18" y="27" font-size="13" fill="#fff" fill-opacity="0.7">Physics-I Lab</text>
+<rect x="18" y="40" width="154" height="8" rx="4" fill="#fff" fill-opacity="0.15"/>
+<rect x="18" y="40" width="0" height="8" rx="4" fill="#38BDF8"><animate attributeName="width" values="0;122;122;0" keyTimes="0;0.4;0.85;1" dur="6s" repeatCount="indefinite"/></rect>
+</g>
+<g transform="translate(920 260)">
+<animateTransform attributeName="transform" type="translate" values="920 260;920 266;920 260" dur="6s" repeatCount="indefinite"/>
+<rect width="200" height="56" rx="16" fill="url(#card)" stroke="#fff" stroke-opacity="0.18"/>
+<circle cx="30" cy="28" r="10" fill="#F472B6"/>
+<text x="52" y="33" font-size="15" font-weight="600" fill="#fff">Class in 15 min</text>
+</g>
+</g>
+
+<!-- sweeping shine -->
+<rect x="-300" y="0" width="260" height="360" fill="url(#shine)" transform="skewX(-20)">
+<animate attributeName="x" values="-400;1500" dur="7s" repeatCount="indefinite"/>
+</rect>
+
+<rect x="1" y="1" width="1198" height="358" rx="29" fill="none" stroke="#fff" stroke-opacity="0.15"/>
+</g>
+</svg>

@@ -1,0 +1,6 @@
+{
+  "name": "AttendTrack",
+  "description": "Student attendance manager and academic timetable tracker with bunk calculations, analytics, and study planner.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
