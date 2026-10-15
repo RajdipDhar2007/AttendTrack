@@ -2,7 +2,7 @@
 
 <img src="docs/banner.svg" alt="AttendTrack animated banner" width="100%"/>
 
-<a href="https://github.com/RajdipDhar2007/attendtrack">
+<a href="https://github.com/RajdipDhar2007/AttendTrack">
   <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&pause=1000&color=8B5CF6&center=true&vCenter=true&width=700&lines=Track+every+class+in+one+tap+%F0%9F%8E%AF;Know+exactly+how+many+classes+you+can+bunk+%F0%9F%98%8E;Recover+to+your+target+with+a+plan+%F0%9F%93%88;Glassy%2C+animated%2C+and+actually+fun+to+open+%E2%9C%A8" alt="Typing animation"/>
 </a>
 
@@ -156,8 +156,8 @@ sdk.dir=C\:\\Users\\<you>\\AppData\\Local\\Android\\Sdk
 ```
 
 ```bash
-git clone https://github.com/RajdipDhar2007/attendtrack.git
-cd attendtrack
+git clone https://github.com/RajdipDhar2007/AttendTrack.git
+cd AttendTrack
 ```
 
 <details>
@@ -239,7 +239,7 @@ Fork → branch → commit → pull request. Issues and ideas are very welcome.
 
 <div align="center">
 
-<a href="https://github.com/RajdipDhar2007/attendtrack">
+<a href="https://github.com/RajdipDhar2007/AttendTrack">
   <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=18&pause=1200&color=F472B6&center=true&vCenter=true&width=700&lines=%E2%AD%90+One+click+keeps+this+project+alive;Bunk+smart.+Recover+fast.+Never+fall+below+target.;Thanks+for+stopping+by+%F0%9F%92%9C" alt="Footer typing animation"/>
 </a>
 
