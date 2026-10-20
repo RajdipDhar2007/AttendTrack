@@ -1,0 +1,466 @@
+{
+  "student": {
+    "name": null,
+    "institute": "Heritage Institute of Technology, Kolkata",
+    "department": "Computer Science Engineering",
+    "program": "B.Tech",
+    "year": "1st Year",
+    "semester": "1st Semester",
+    "section": "A",
+    "group": "Gr. 2",
+    "session": "2026-2027"
+  },
+  "notes": [
+    "Long labs: Tuesday 4-hour lab; Thursday 4-hour lab.",
+    "Thursday 3:00 PM - 5:00 PM is a Library period.",
+    "'BB' (Life Skills) have no full name in the timetable.",
+    "'RM' (MEC1052 Thursday lab teacher) is not listed in the Section A faculty details."
+  ],
+  "schedule": {
+    "Monday": [
+      {
+        "type": "Lecture",
+        "subject_code": "HUM1002",
+        "subject_name": "Universal Human Values and Professional Ethics",
+        "teacher": {
+          "initials": "KM",
+          "name": "Prof Koyel Mallick",
+          "department": "HUM"
+        },
+        "classroom": "ICT207",
+        "start_time": "9:00 AM",
+        "end_time": "10:00 AM",
+        "time": "9:00 AM - 10:00 AM"
+      },
+      {
+        "type": "Lecture",
+        "subject_code": "PHY1001",
+        "subject_name": "Physics-I",
+        "teacher": {
+          "initials": "AD",
+          "name": "Dr. Ajanta Das",
+          "department": "Physics"
+        },
+        "classroom": "ICT207",
+        "start_time": "10:00 AM",
+        "end_time": "11:00 AM",
+        "time": "10:00 AM - 11:00 AM"
+      },
+      {
+        "type": "Lecture",
+        "subject_code": "MTH1101",
+        "subject_name": "Mathematics-I",
+        "teacher": {
+          "initials": "AP",
+          "name": "Dr. Ashesh Paul",
+          "department": "Mathematics"
+        },
+        "classroom": "ICT207",
+        "start_time": "11:00 AM",
+        "end_time": "12:00 PM",
+        "time": "11:00 AM - 12:00 PM"
+      },
+      {
+        "type": "Break",
+        "subject_code": null,
+        "subject_name": "Break",
+        "teacher": null,
+        "classroom": null,
+        "start_time": "12:00 PM",
+        "end_time": "1:00 PM",
+        "time": "12:00 PM - 1:00 PM"
+      },
+      {
+        "type": "Lecture",
+        "subject_code": "MEC1051",
+        "subject_name": "Workshop / Manufacturing Practice",
+        "teacher": {
+          "initials": "VKS",
+          "name": "Prof. Vishnu Kumar Singh",
+          "department": "ME"
+        },
+        "classroom": "ICT307",
+        "start_time": "1:00 PM",
+        "end_time": "2:00 PM",
+        "time": "1:00 PM - 2:00 PM"
+      },
+      {
+        "type": "Lecture",
+        "subject_code": "MEC1052",
+        "subject_name": "Engineering Graphics and Design",
+        "teacher": {
+          "initials": "SK",
+          "name": "Dr. Subham Kundu",
+          "department": "ME"
+        },
+        "classroom": "ICT307",
+        "start_time": "2:00 PM",
+        "end_time": "3:00 PM",
+        "time": "2:00 PM - 3:00 PM"
+      },
+      {
+        "type": "Lecture",
+        "subject_code": "ECE1001",
+        "subject_name": "Introduction to Electronic Devices and Circuits",
+        "teacher": {
+          "initials": "PAG",
+          "name": "Dr. Prativa Agarwalla",
+          "department": "ECE"
+        },
+        "classroom": "ICT305",
+        "start_time": "3:00 PM",
+        "end_time": "4:00 PM",
+        "time": "3:00 PM - 4:00 PM"
+      },
+      {
+        "type": "Remedial",
+        "subject_code": null,
+        "subject_name": "Remedial",
+        "teacher": null,
+        "classroom": "ICT305",
+        "start_time": "4:00 PM",
+        "end_time": "5:00 PM",
+        "time": "4:00 PM - 5:00 PM"
+      }
+    ],
+    "Tuesday": [
+      {
+        "type": "Lecture",
+        "subject_code": "PHY1001",
+        "subject_name": "Physics-I",
+        "teacher": {
+          "initials": "AC",
+          "name": "Dr. Arindam Chakraborty",
+          "department": "Physics"
+        },
+        "classroom": "ICT305",
+        "start_time": "9:00 AM",
+        "end_time": "10:00 AM",
+        "time": "9:00 AM - 10:00 AM"
+      },
+      {
+        "type": "Tutorial",
+        "subject_code": "HUM1002",
+        "subject_name": "Universal Human Values and Professional Ethics",
+        "teacher": {
+          "initials": "KGT",
+          "name": "Dr Kasturi Guha Thakurta",
+          "department": "HUM"
+        },
+        "classroom": "ICT307",
+        "start_time": "10:00 AM",
+        "end_time": "11:00 AM",
+        "time": "10:00 AM - 11:00 AM"
+      },
+      {
+        "type": "Lecture",
+        "subject_code": "MTH1101",
+        "subject_name": "Mathematics-I",
+        "teacher": {
+          "initials": "SB",
+          "name": "Dr. Samarpita Bhattacharya",
+          "department": "Mathematics"
+        },
+        "classroom": "ICT305",
+        "start_time": "11:00 AM",
+        "end_time": "12:00 PM",
+        "time": "11:00 AM - 12:00 PM"
+      },
+      {
+        "type": "Break",
+        "subject_code": null,
+        "subject_name": "Break",
+        "teacher": null,
+        "classroom": null,
+        "start_time": "12:00 PM",
+        "end_time": "1:00 PM",
+        "time": "12:00 PM - 1:00 PM"
+      },
+      {
+        "type": "Lab",
+        "subject_code": "MEC1051",
+        "subject_name": "Workshop / Manufacturing Practice",
+        "teacher": {
+          "initials": "AKR",
+          "name": "Dr. Amal Kumar Ray",
+          "department": "ME"
+        },
+        "classroom": "CME B06",
+        "start_time": "1:00 PM",
+        "end_time": "5:00 PM",
+        "time": "1:00 PM - 5:00 PM",
+        "technical_assistants": [
+          {
+            "initials": "SJ",
+            "name": "Mr. Subham Jana",
+            "department": "ME"
+          },
+          {
+            "initials": "MM",
+            "name": "Mr. Mrinmoy Mondal",
+            "department": "ME"
+          }
+        ],
+        "lab_tab": "Gr. 2"
+      }
+    ],
+    "Wednesday": [
+      {
+        "type": "Lab",
+        "subject_code": "PHY1051",
+        "subject_name": "Physics-I Lab",
+        "teacher": {
+          "initials": "STM",
+          "name": "Dr. Soumitra Maity",
+          "department": "Physics"
+        },
+        "classroom": "CB106B",
+        "start_time": "9:00 AM",
+        "end_time": "12:00 PM",
+        "time": "9:00 AM - 12:00 PM",
+        "technical_assistants": [
+          {
+            "initials": "MB",
+            "name": "Mrs. Moumita Bera",
+            "department": "Physics"
+          },
+          {
+            "initials": "RCS",
+            "name": "Mr. Rabin Chandra Samanta",
+            "department": "Physics"
+          }
+        ],
+        "lab_tab": "Gr. 2"
+      },
+      {
+        "type": "Break",
+        "subject_code": null,
+        "subject_name": "Break",
+        "teacher": null,
+        "classroom": null,
+        "start_time": "12:00 PM",
+        "end_time": "1:00 PM",
+        "time": "12:00 PM - 1:00 PM"
+      },
+      {
+        "type": "Lecture",
+        "subject_code": "PHY1001",
+        "subject_name": "Physics-I",
+        "teacher": {
+          "initials": "AD",
+          "name": "Dr. Ajanta Das",
+          "department": "Physics"
+        },
+        "classroom": "ICT311",
+        "start_time": "1:00 PM",
+        "end_time": "2:00 PM",
+        "time": "1:00 PM - 2:00 PM"
+      },
+      {
+        "type": "Lecture",
+        "subject_code": "HUM1002",
+        "subject_name": "Universal Human Values and Professional Ethics",
+        "teacher": {
+          "initials": "KM",
+          "name": "Prof Koyel Mallick",
+          "department": "HUM"
+        },
+        "classroom": "CB601",
+        "start_time": "2:00 PM",
+        "end_time": "3:00 PM",
+        "time": "2:00 PM - 3:00 PM"
+      },
+      {
+        "type": "Lab",
+        "subject_code": "ECE1051",
+        "subject_name": "Introduction to Electronic Devices and Circuits Laboratory",
+        "teacher": {
+          "initials": "CR",
+          "name": "Dr. Chandrima Roy",
+          "department": "ECE"
+        },
+        "classroom": "ICT502",
+        "start_time": "3:00 PM",
+        "end_time": "5:00 PM",
+        "time": "3:00 PM - 5:00 PM",
+        "technical_assistants": [
+          {
+            "initials": "AS",
+            "name": "Mr. Arijit Sen",
+            "department": "ECE"
+          },
+          {
+            "initials": "PS",
+            "name": "Mr. Pritam Sahu",
+            "department": "ECE"
+          }
+        ],
+        "lab_tab": "Gr. 2"
+      }
+    ],
+    "Thursday": [
+      {
+        "type": "Lab",
+        "subject_code": "MEC1052",
+        "subject_name": "Engineering Graphics and Design",
+        "teacher": {
+          "initials": "RM",
+          "name": null,
+          "department": null
+        },
+        "classroom": "CME 214",
+        "start_time": "9:00 AM",
+        "end_time": "1:00 PM",
+        "time": "9:00 AM - 1:00 PM",
+        "technical_assistants": [
+          {
+            "initials": "STR",
+            "name": "Mr. Sayantan Rudra",
+            "department": "ME"
+          }
+        ],
+        "lab_tab": "Gr. 2"
+      },
+      {
+        "type": "Break",
+        "subject_code": null,
+        "subject_name": "Break",
+        "teacher": null,
+        "classroom": null,
+        "start_time": "1:00 PM",
+        "end_time": "2:00 PM",
+        "time": "1:00 PM - 2:00 PM"
+      },
+      {
+        "type": "Tutorial",
+        "subject_code": "MTH1101",
+        "subject_name": "Mathematics-I",
+        "teacher": {
+          "initials": "SB",
+          "name": "Dr. Samarpita Bhattacharya",
+          "department": "Mathematics"
+        },
+        "classroom": "ICT305",
+        "start_time": "2:00 PM",
+        "end_time": "3:00 PM",
+        "time": "2:00 PM - 3:00 PM"
+      },
+      {
+        "type": "Library",
+        "subject_code": null,
+        "subject_name": "Library",
+        "teacher": null,
+        "classroom": null,
+        "start_time": "3:00 PM",
+        "end_time": "5:00 PM",
+        "time": "3:00 PM - 5:00 PM"
+      }
+    ],
+    "Friday": [
+      {
+        "type": "Lecture",
+        "subject_code": "PHY1001",
+        "subject_name": "Physics-I",
+        "teacher": {
+          "initials": "AC",
+          "name": "Dr. Arindam Chakraborty",
+          "department": "Physics"
+        },
+        "classroom": "CB601",
+        "start_time": "9:00 AM",
+        "end_time": "10:00 AM",
+        "time": "9:00 AM - 10:00 AM"
+      },
+      {
+        "type": "Lecture",
+        "subject_code": "ECE1001",
+        "subject_name": "Introduction to Electronic Devices and Circuits",
+        "teacher": {
+          "initials": "PAG",
+          "name": "Dr. Prativa Agarwalla",
+          "department": "ECE"
+        },
+        "classroom": "CB601",
+        "start_time": "10:00 AM",
+        "end_time": "11:00 AM",
+        "time": "10:00 AM - 11:00 AM"
+      },
+      {
+        "type": "Life Skills",
+        "subject_code": null,
+        "subject_name": "Life Skills",
+        "teacher": {
+          "initials": "BB",
+          "name": null,
+          "department": null
+        },
+        "classroom": "ICT311",
+        "start_time": "11:00 AM",
+        "end_time": "12:00 PM",
+        "time": "11:00 AM - 12:00 PM"
+      },
+      {
+        "type": "Break",
+        "subject_code": null,
+        "subject_name": "Break",
+        "teacher": null,
+        "classroom": null,
+        "start_time": "12:00 PM",
+        "end_time": "1:00 PM",
+        "time": "12:00 PM - 1:00 PM"
+      },
+      {
+        "type": "Lecture",
+        "subject_code": "MTH1101",
+        "subject_name": "Mathematics-I",
+        "teacher": {
+          "initials": "AP",
+          "name": "Dr. Ashesh Paul",
+          "department": "Mathematics"
+        },
+        "classroom": "ICT305",
+        "start_time": "1:00 PM",
+        "end_time": "2:00 PM",
+        "time": "1:00 PM - 2:00 PM"
+      },
+      {
+        "type": "Lecture",
+        "subject_code": "ECE1001",
+        "subject_name": "Introduction to Electronic Devices and Circuits",
+        "teacher": {
+          "initials": "PAG",
+          "name": "Dr. Prativa Agarwalla",
+          "department": "ECE"
+        },
+        "classroom": "ICT305",
+        "start_time": "2:00 PM",
+        "end_time": "3:00 PM",
+        "time": "2:00 PM - 3:00 PM"
+      },
+      {
+        "type": "Tutorial",
+        "subject_code": "MTH1101",
+        "subject_name": "Mathematics-I",
+        "teacher": {
+          "initials": "SB",
+          "name": "Dr. Samarpita Bhattacharya",
+          "department": "Mathematics"
+        },
+        "classroom": "ICT305",
+        "start_time": "3:00 PM",
+        "end_time": "4:00 PM",
+        "time": "3:00 PM - 4:00 PM"
+      },
+      {
+        "type": "Mentoring",
+        "subject_code": null,
+        "subject_name": "Mentoring",
+        "teacher": null,
+        "classroom": null,
+        "start_time": "4:00 PM",
+        "end_time": "5:00 PM",
+        "time": "4:00 PM - 5:00 PM"
+      }
+    ]
+  }
+}
