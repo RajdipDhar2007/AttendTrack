@@ -119,6 +119,46 @@
 - Import a timetable JSON (see [`Rajdip_Dhar_Schedule.json`](Rajdip_Dhar_Schedule.json) for the format) from the app's settings.
 - The import brings in subjects, teachers, rooms and weekly slots only. **Attendance and exams start empty**, so you mark every class yourself and add your own exams.
 
+## 🗓️ Demo routines
+
+The [`routines/`](routines) folder holds ready-made demo timetables you can import to try the app without typing anything in. They are the **CSE, 1st Year, 1st Semester (2026-27)** class routines at Heritage Institute of Technology, Kolkata.
+
+| File | Section | Group |
+|---|---|---|
+| `A1.json` / `A2.json` | A | Gr. 1 / Gr. 2 |
+| `B1.json` / `B2.json` | B | Gr. 1 / Gr. 2 |
+| `C1.json` / `C2.json` | C | Gr. 1 / Gr. 2 |
+
+`CSE_1st_Year_1st_Sem_Routine_2026-27.xlsx` is the original spreadsheet the JSON files were made from.
+
+Pick the file that matches your section and group, then use the JSON timetable import in the app's settings. Each file has this shape:
+
+```json
+{
+  "student": { "institute": "...", "department": "...", "year": "1st Year", "semester": "1st Semester", "section": "A", "group": "Gr. 1", "session": "2026-2027" },
+  "notes": ["Long labs: ...", "..."],
+  "schedule": {
+    "Monday": [
+      {
+        "type": "Lecture",
+        "subject_code": "PHY1001",
+        "subject_name": "Physics-I",
+        "teacher": { "initials": "AD", "name": "Dr. Ajanta Das", "department": "Physics" },
+        "classroom": "ICT207",
+        "start_time": "10:00 AM",
+        "end_time": "11:00 AM",
+        "time": "10:00 AM - 11:00 AM"
+      }
+    ]
+  }
+}
+```
+
+- `schedule` maps each weekday (Monday to Friday) to that day's slots in order.
+- `type` is one of `Lecture`, `Tutorial`, `Lab`, `Remedial`, `Mentoring`, `Life Skills`, `Library` or `Break`.
+- Lab slots can be long (up to 4 hours) and may also list `technical_assistants`.
+- `student.name` is `null` in the demos. Your own name comes from the onboarding page.
+
 ## 🧠 How the math works
 
 ```text
@@ -207,6 +247,7 @@ You can also paste a key inside the app's settings. Never commit `.env` or real 
 .
 ├── AttendTrack.apk               Ready-to-install debug build
 ├── Rajdip_Dhar_Schedule.json     Sample timetable for the JSON import
+├── routines/                     Demo CSE 1st-year routines (sections A, B, C; groups 1, 2)
 ├── docs/
 │   ├── banner.svg                Animated README header
 │   ├── footer.svg                Animated README footer
