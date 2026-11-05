@@ -14,8 +14,10 @@
 ![Gemini](https://img.shields.io/badge/Gemini%20AI-8E75B2?style=for-the-badge&logo=googlegemini&logoColor=white)
 ![Room](https://img.shields.io/badge/Room%20DB-F59E0B?style=for-the-badge)
 ![Min SDK](https://img.shields.io/badge/minSdk-26-0EA5E9?style=for-the-badge)
+[![License: MIT](https://img.shields.io/badge/License-MIT-22C55E?style=for-the-badge)](LICENSE)
+[![Release](https://img.shields.io/github/v/release/RajdipDhar2007/AttendTrack?style=for-the-badge&color=8B5CF6)](https://github.com/RajdipDhar2007/AttendTrack/releases/latest)
 
-**[Features](#-features) · [Screenshots](#-screenshots) · [Install](#-install-in-60-seconds) · [Build](#%EF%B8%8F-build-from-source) · [How it works](#-how-the-math-works)**
+**[Features](#-features) · [Privacy & Security](#-privacy--security) · [Screenshots](#-screenshots) · [Install](#-install-in-60-seconds) · [Build](#%EF%B8%8F-build-from-source) · [How it works](#-how-the-math-works)**
 
 </div>
 
@@ -114,6 +116,7 @@
 - Local-first Room database that works offline
 - JSON export/import, cloud backup and restore, JSON timetable import
 - **PDF export**: a printable attendance report (summary, subject-wise table and full class log) from Settings
+- **Live class countdown**: a ring that fills as the current class runs, with a ticking timer, then a "starts in" countdown for the next class
 - **Home-screen widget**: overall %, safe bunks or classes needed, updated live as you mark classes
 
 ### 🚀 First launch & importing your timetable
@@ -181,7 +184,7 @@ flowchart LR
 
 ## 📲 Install in 60 seconds
 
-1. Grab [`AttendTrack.apk`](AttendTrack.apk) from the project root, or build the debug APK yourself (see below).
+1. Download `AttendTrack.apk` from the [latest release](https://github.com/RajdipDhar2007/AttendTrack/releases/latest) (or the project root), or build the debug APK yourself (see below).
 2. Copy it to your phone and open it.
 3. Allow **Install unknown apps** if asked. Done. 🎉
 
@@ -243,11 +246,20 @@ You can also paste a key inside the app's settings. Never commit `.env` or real 
 
 </details>
 
+## 🔒 Privacy & Security
+
+- Your data lives **on your device**; there are no accounts, ads or trackers. See [PRIVACY.md](PRIVACY.md).
+- The AI Assistant and cloud backup are optional; only they send data off-device.
+- Found a vulnerability? Please follow [SECURITY.md](SECURITY.md) and report it privately.
+- The bundled APK is **debug-signed** for personal use. For public distribution, build a release APK/AAB signed with your own keystore.
+
 ## 🗂️ Project structure
 
 ```text
 .
 ├── AttendTrack.apk               Ready-to-install debug build
+├── LICENSE · SECURITY.md · PRIVACY.md · CONTRIBUTING.md · CODE_OF_CONDUCT.md · CHANGELOG.md
+├── .github/                      Issue and pull request templates
 ├── Rajdip_Dhar_Schedule.json     Sample timetable for the JSON import
 ├── routines/                     Demo CSE 1st-year routines (sections A, B, C; groups 1, 2)
 ├── docs/
@@ -268,7 +280,11 @@ You can also paste a key inside the app's settings. Never commit `.env` or real 
 
 ## 🤝 Contributing
 
-Fork → branch → commit → pull request. Issues and ideas are very welcome.
+Fork → branch → commit → pull request. See [CONTRIBUTING.md](CONTRIBUTING.md) and the [Code of Conduct](CODE_OF_CONDUCT.md). Issues and ideas are very welcome.
+
+## 📄 License
+
+Released under the [MIT License](LICENSE) © 2026 Rajdip Dhar.
 
 ## 👤 Author
 
