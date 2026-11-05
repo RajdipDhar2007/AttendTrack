@@ -436,114 +436,13 @@ fun DashboardScreen(
                 }
             }
 
-            // Live Class Countdown Banner
-            activeClass?.let { current ->
-                item {
-                    Box(modifier = Modifier.staggeredEntrance(0)) {
-                    val minutesLeft = current.remainingSeconds / 60
-                    val secondsLeft = current.remainingSeconds % 60
-                    GlassCard(modifier = Modifier.fillMaxWidth()) {
-                        Column {
-                            Row(
-                                verticalAlignment = Alignment.CenterVertically,
-                                horizontalArrangement = Arrangement.SpaceBetween,
-                                modifier = Modifier.fillMaxWidth()
-                            ) {
-                                Row(verticalAlignment = Alignment.CenterVertically) {
-                                    Box(
-                                        modifier = Modifier
-                                            .size(10.dp)
-                                            .clip(CircleShape)
-                                            .background(AttendSuccess)
-                                    )
-                                    Spacer(modifier = Modifier.width(8.dp))
-                                    Text(
-                                        text = "CLASS IN PROGRESS",
-                                        style = MaterialTheme.typography.labelSmall,
-                                        fontWeight = FontWeight.Black,
-                                        color = AttendSuccess,
-                                        letterSpacing = 1.sp
-                                    )
-                                }
-                                Text(
-                                    text = String.format("%02d:%02d left", minutesLeft, secondsLeft),
-                                    style = MaterialTheme.typography.labelLarge,
-                                    fontWeight = FontWeight.Bold,
-                                    color = MaterialTheme.colorScheme.primary
-                                )
-                            }
-                            Spacer(modifier = Modifier.height(8.dp))
-                            val activeSubjTitle = if (current.subject.code.isNotBlank()) "${current.subject.code} - ${current.subject.name}" else current.subject.name
-                            Text(
-                                text = "$activeSubjTitle [${current.slot.classType}]",
-                                style = MaterialTheme.typography.titleLarge,
-                                fontWeight = FontWeight.Bold
-                            )
-                            val roomStr = if (current.slot.room.isNotBlank()) "Room: ${current.slot.room}" else ""
-                            val teacherStr = current.teacher?.let { " • ${it.name}" } ?: ""
-                            Text(
-                                text = "$roomStr$teacherStr (${current.slot.getDisplayTimeSpan()})",
-                                style = MaterialTheme.typography.bodyMedium,
-                                color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f)
-                            )
-                            Spacer(modifier = Modifier.height(10.dp))
-                            LinearProgressIndicator(
-                                progress = { current.progress },
-                                modifier = Modifier
-                                    .fillMaxWidth()
-                                    .height(8.dp)
-                                    .clip(RoundedCornerShape(4.dp))
-                            )
-                        }
-                    }
-                    }
-                }
-            }
-
-            // Up Next Class
-            if (activeClass == null && nextClass != null) {
-                item {
-                    Box(modifier = Modifier.staggeredEntrance(0)) {
-                    nextClass?.let { next ->
-                        GlassCard(modifier = Modifier.fillMaxWidth()) {
-                            Row(verticalAlignment = Alignment.CenterVertically) {
-                                Box(
-                                    modifier = Modifier
-                                        .size(44.dp)
-                                        .clip(CircleShape)
-                                        .background(MaterialTheme.colorScheme.primary.copy(alpha = 0.15f)),
-                                    contentAlignment = Alignment.Center
-                                ) {
-                                    Icon(
-                                        imageVector = Icons.Default.AccessTime,
-                                        contentDescription = null,
-                                        tint = MaterialTheme.colorScheme.primary
-                                    )
-                                }
-                                Spacer(modifier = Modifier.width(14.dp))
-                                Column {
-                                    Text(
-                                        text = "UP NEXT AT ${next.slot.getDisplayStartTime()}",
-                                        style = MaterialTheme.typography.labelSmall,
-                                        fontWeight = FontWeight.Bold,
-                                        color = MaterialTheme.colorScheme.primary
-                                    )
-                                    val nextSubjTitle = if (next.subject.code.isNotBlank()) "${next.subject.code} - ${next.subject.name}" else next.subject.name
-                                    Text(
-                                        text = "$nextSubjTitle [${next.slot.classType}]",
-                                        style = MaterialTheme.typography.titleMedium,
-                                        fontWeight = FontWeight.Bold
-                                    )
-                                    Text(
-                                        text = if (next.slot.room.isNotBlank()) "Room: ${next.slot.room}" else "Scheduled slot",
-                                        style = MaterialTheme.typography.bodyMedium,
-                                        color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f)
-                                    )
-                                }
-                            }
-                        }
-                    }
-                    }
+            // Live class / next class animated countdown
+            item {
+                Box(modifier = Modifier.staggeredEntrance(0)) {
+                    com.example.ui.components.LiveClassCountdownCard(
+                        activeClass = activeClass,
+                        nextClass = nextClass
+                    )
                 }
             }
 
