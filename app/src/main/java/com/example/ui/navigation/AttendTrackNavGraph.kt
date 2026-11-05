@@ -1,7 +1,13 @@
 package com.example.ui.navigation
 
 import androidx.compose.animation.AnimatedContent
+import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.spring
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.scaleIn
+import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.slideInVertically
+import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.animation.togetherWith
@@ -108,8 +114,22 @@ fun AttendTrackAppNav(
             AnimatedContent(
                 targetState = currentScreen,
                 transitionSpec = {
-                    fadeIn(animationSpec = spring(stiffness = 500f)) togetherWith
-                            fadeOut(animationSpec = spring(stiffness = 500f))
+                    val from = BottomNavItems.indexOf(initialState)
+                    val to = BottomNavItems.indexOf(targetState)
+                    if (from >= 0 && to >= 0) {
+                        // Bottom-nav tabs slide in the direction of travel
+                        val dir = if (to > from) 1 else -1
+                        (slideInHorizontally(spring(stiffness = Spring.StiffnessMediumLow)) { it / 4 * dir } +
+                                fadeIn(tween(300))) togetherWith
+                                (slideOutHorizontally(spring(stiffness = Spring.StiffnessMediumLow)) { -it / 4 * dir } +
+                                        fadeOut(tween(150)))
+                    } else {
+                        // Auxiliary screens rise up and settle with a slight zoom
+                        (slideInVertically(spring(stiffness = Spring.StiffnessMediumLow)) { it / 12 } +
+                                fadeIn(tween(300)) +
+                                scaleIn(initialScale = 0.96f, animationSpec = tween(300))) togetherWith
+                                fadeOut(tween(150))
+                    }
                 },
                 label = "screen_transition"
             ) { target ->

@@ -1,5 +1,6 @@
 package com.example.ui.screens
 
+import com.example.ui.components.staggeredEntrance
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -199,6 +200,7 @@ fun SubjectAttendanceScreen(
                         items = filteredList,
                         key = { "${it.subject.id}_${it.teacher?.id ?: 0}_${it.classType.name}" }
                     ) { item ->
+                        Box(modifier = Modifier.staggeredEntrance(minOf(filteredList.indexOf(item).coerceAtLeast(0), 6))) {
                         SubjectStatCard(
                             stat = item,
                             onEditTarget = {
@@ -209,10 +211,13 @@ fun SubjectAttendanceScreen(
                                 attendanceActionSubject = item
                             }
                         )
+                        }
                     }
 
                     item {
+                        Box(modifier = Modifier.staggeredEntrance(0)) {
                         Spacer(modifier = Modifier.height(84.dp))
+                        }
                     }
                 }
             }

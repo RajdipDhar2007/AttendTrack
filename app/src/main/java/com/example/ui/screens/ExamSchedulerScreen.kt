@@ -1,5 +1,7 @@
 package com.example.ui.screens
 
+import com.example.ui.components.staggeredEntrance
+import androidx.compose.foundation.lazy.itemsIndexed
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import androidx.compose.foundation.background
@@ -105,6 +107,7 @@ fun ExamSchedulerScreen(
                 verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
                 item {
+                    Box(modifier = Modifier.staggeredEntrance(0)) {
                     Spacer(modifier = Modifier.height(16.dp))
                     Row(
                         modifier = Modifier.fillMaxWidth(),
@@ -141,10 +144,12 @@ fun ExamSchedulerScreen(
                             )
                         }
                     }
+                    }
                 }
 
                 // Friendly Tip Card
                 item {
+                    Box(modifier = Modifier.staggeredEntrance(1)) {
                     Box(
                         modifier = Modifier
                             .fillMaxWidth()
@@ -159,10 +164,12 @@ fun ExamSchedulerScreen(
                             color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.85f)
                         )
                     }
+                    }
                 }
 
                 if (upcomingExams.isEmpty()) {
                     item {
+                        Box(modifier = Modifier.staggeredEntrance(2)) {
                         GlassCard(modifier = Modifier.fillMaxWidth()) {
                             Column(
                                 horizontalAlignment = Alignment.CenterHorizontally,
@@ -191,24 +198,29 @@ fun ExamSchedulerScreen(
                                 )
                             }
                         }
+                        }
                     }
                 } else {
-                    items(upcomingExams) { exam ->
+                    itemsIndexed(upcomingExams) { idx, exam ->
+                        Box(modifier = Modifier.staggeredEntrance(minOf(idx, 6))) {
                         val sub = subjects.firstOrNull { it.id == exam.subjectId }
                         LiveExamCountdownCard(
                             exam = exam,
                             subject = sub,
                             onDelete = { viewModel.deleteExam(exam) }
                         )
+                        }
                     }
                 }
 
                 item {
+                    Box(modifier = Modifier.staggeredEntrance(3)) {
                     Spacer(modifier = Modifier.height(12.dp))
                     Box(modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
                         FooterCredit()
                     }
                     Spacer(modifier = Modifier.height(84.dp))
+                    }
                 }
             }
 

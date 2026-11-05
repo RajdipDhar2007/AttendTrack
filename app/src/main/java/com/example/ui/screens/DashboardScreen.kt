@@ -1,5 +1,7 @@
 package com.example.ui.screens
 
+import com.example.ui.components.staggeredEntrance
+import androidx.compose.foundation.lazy.itemsIndexed
 import android.app.DatePickerDialog
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.background
@@ -148,6 +150,7 @@ fun DashboardScreen(
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             item {
+                Box(modifier = Modifier.staggeredEntrance(0)) {
                 Spacer(modifier = Modifier.height(16.dp))
                 // Student Friendly Header
                 Row(
@@ -169,10 +172,12 @@ fun DashboardScreen(
                         )
                     }
                 }
+                }
             }
 
             // Friendly student encouragement banner
             item {
+                Box(modifier = Modifier.staggeredEntrance(1)) {
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -187,11 +192,13 @@ fun DashboardScreen(
                         color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.85f)
                     )
                 }
+                }
             }
 
             // Low attendance warning banner if below target
             if (overallStat.totalEffective > 0 && overallStat.percentage < overallStat.targetPercentage) {
                 item {
+                    Box(modifier = Modifier.staggeredEntrance(2)) {
                     Box(
                         modifier = Modifier
                             .fillMaxWidth()
@@ -222,11 +229,13 @@ fun DashboardScreen(
                             }
                         }
                     }
+                    }
                 }
             }
 
             // Overall Attendance Ring Card
             item {
+                Box(modifier = Modifier.staggeredEntrance(3)) {
                 GlassCard(
                     modifier = Modifier.fillMaxWidth(),
                     onClick = onNavigateToSubjectWise
@@ -317,19 +326,23 @@ fun DashboardScreen(
                         }
                     }
                 }
+                }
             }
 
             // Recharts-inspired Subject Attendance Bar Chart Component
             item {
+                Box(modifier = Modifier.staggeredEntrance(4)) {
                 SubjectAttendanceBarChart(
                     stats = subjectStats,
                     defaultTargetPercentage = overallStat.targetPercentage,
                     onNavigateToSubjectWise = onNavigateToSubjectWise
                 )
+                }
             }
 
             // Study Planner & Goals Overview Card
             item {
+                Box(modifier = Modifier.staggeredEntrance(5)) {
                 val totalTargetHours = allStudyGoals.sumOf { it.targetHours.toDouble() }.toFloat()
                 val totalStudiedHours = allStudyGoals.sumOf { it.studiedHours.toDouble() }.toFloat()
                 val completedGoals = allStudyGoals.count { it.isCompleted }
@@ -420,11 +433,13 @@ fun DashboardScreen(
                         }
                     }
                 }
+                }
             }
 
             // Live Class Countdown Banner
             activeClass?.let { current ->
                 item {
+                    Box(modifier = Modifier.staggeredEntrance(0)) {
                     val minutesLeft = current.remainingSeconds / 60
                     val secondsLeft = current.remainingSeconds % 60
                     GlassCard(modifier = Modifier.fillMaxWidth()) {
@@ -481,12 +496,14 @@ fun DashboardScreen(
                             )
                         }
                     }
+                    }
                 }
             }
 
             // Up Next Class
             if (activeClass == null && nextClass != null) {
                 item {
+                    Box(modifier = Modifier.staggeredEntrance(0)) {
                     nextClass?.let { next ->
                         GlassCard(modifier = Modifier.fillMaxWidth()) {
                             Row(verticalAlignment = Alignment.CenterVertically) {
@@ -526,11 +543,13 @@ fun DashboardScreen(
                             }
                         }
                     }
+                    }
                 }
             }
 
             // INTERACTIVE DATE PICKER & BACKFILL / FUTURE MARKING STRIP
             item {
+                Box(modifier = Modifier.staggeredEntrance(0)) {
                 Column {
                     Row(
                         modifier = Modifier.fillMaxWidth(),
@@ -643,11 +662,13 @@ fun DashboardScreen(
                         }
                     }
                 }
+                }
             }
 
             // Schedule List for the selected Date
             if (selectedSchedule.isEmpty()) {
                 item {
+                    Box(modifier = Modifier.staggeredEntrance(0)) {
                     GlassCard(modifier = Modifier.fillMaxWidth()) {
                         Column(
                             horizontalAlignment = Alignment.CenterHorizontally,
@@ -666,9 +687,11 @@ fun DashboardScreen(
                             )
                         }
                     }
+                    }
                 }
             } else {
-                items(selectedSchedule) { item ->
+                itemsIndexed(selectedSchedule) { idx, item ->
+                    Box(modifier = Modifier.staggeredEntrance(minOf(idx, 6))) {
                     TodayScheduleItemCard(
                         item = item,
                         onMarkStatus = { status ->
@@ -682,11 +705,13 @@ fun DashboardScreen(
                             )
                         }
                     )
+                    }
                 }
             }
 
             // Quick backfill / add class for this date
             item {
+                Box(modifier = Modifier.staggeredEntrance(0)) {
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.Center
@@ -700,10 +725,12 @@ fun DashboardScreen(
                         )
                     }
                 }
+                }
             }
 
             // Footer branding
             item {
+                Box(modifier = Modifier.staggeredEntrance(0)) {
                 Spacer(modifier = Modifier.height(12.dp))
                 Box(
                     modifier = Modifier.fillMaxWidth(),
@@ -712,6 +739,7 @@ fun DashboardScreen(
                     FooterCredit()
                 }
                 Spacer(modifier = Modifier.height(72.dp))
+                }
             }
         }
 

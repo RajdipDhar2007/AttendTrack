@@ -1,5 +1,6 @@
 package com.example.ui.screens
 
+import com.example.ui.components.staggeredEntrance
 import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.RepeatMode
@@ -279,12 +280,16 @@ fun AiAssistantScreen(
 
                 if (isTyping) {
                     item {
+                        Box(modifier = Modifier.staggeredEntrance(0)) {
                         TypingIndicatorBubble()
+                        }
                     }
                 }
 
                 item {
+                    Box(modifier = Modifier.staggeredEntrance(1)) {
                     Spacer(modifier = Modifier.height(8.dp))
+                    }
                 }
             }
 

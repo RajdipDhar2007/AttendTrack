@@ -113,6 +113,8 @@
 - Class and end-of-day alarms, markable from the notification, restored after reboot
 - Local-first Room database that works offline
 - JSON export/import, cloud backup and restore, JSON timetable import
+- **PDF export**: a printable attendance report (summary, subject-wise table and full class log) from Settings
+- **Home-screen widget**: overall %, safe bunks or classes needed, updated live as you mark classes
 
 ### 🚀 First launch & importing your timetable
 - A fresh install opens the **onboarding / login page** first, where you enter your own details. No demo data is loaded.
@@ -253,7 +255,8 @@ You can also paste a key inside the app's settings. Never commit `.env` or real 
 │   ├── footer.svg                Animated README footer
 │   └── screenshots/              App screenshots used above (see its README for the file list)
 └── app/src/main/java/com/example/
-    ├── data/         Room entities, DAO, repository, Gemini and backup services
+    ├── data/         Room entities, DAO, repository, Gemini, backup and PDF export services
+    ├── widget/       Home-screen attendance widget
     ├── receiver/     Alarms, boot and notification action receivers
     └── ui/
         ├── components/   GlassCard, Interactions (animations), charts, dialogs
@@ -262,13 +265,6 @@ You can also paste a key inside the app's settings. Never commit `.env` or real 
         ├── theme/        Palettes and typography
         └── viewmodel/    AttendTrackViewModel
 ```
-
-## 🗺️ Roadmap
-
-- [ ] Home-screen widget
-- [ ] Animations on every screen
-- [ ] Attendance export to PDF
-- [ ] Multi-semester history
 
 ## 🤝 Contributing
 

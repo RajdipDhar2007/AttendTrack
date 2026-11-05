@@ -29,6 +29,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
@@ -597,6 +598,24 @@ class AttendTrackViewModel(application: Application) : AndroidViewModel(applicat
 
     suspend fun exportJson(): String = withContext(Dispatchers.IO) {
         repo.exportToJson()
+    }
+
+    /** Writes the attendance report PDF to [uri]. Returns null on success, or an error message. */
+    suspend fun exportPdf(uri: android.net.Uri): String? = withContext(Dispatchers.IO) {
+        try {
+            com.example.data.export.AttendancePdfExporter.write(
+                context = getApplication(),
+                uri = uri,
+                profile = repo.getProfile(),
+                overall = overallStat.value,
+                stats = subjectStatsByType.value,
+                records = repo.allAttendance.first(),
+                subjects = repo.allSubjects.first()
+            )
+            null
+        } catch (e: Exception) {
+            e.localizedMessage ?: "Could not create the PDF"
+        }
     }
 
     suspend fun importJson(content: String, cleanReplace: Boolean = true): com.example.data.model.ImportResult = withContext(Dispatchers.IO) {

@@ -1,5 +1,7 @@
 package com.example.ui.screens
 
+import com.example.ui.components.staggeredEntrance
+import androidx.compose.foundation.lazy.itemsIndexed
 import android.app.DatePickerDialog
 import androidx.activity.compose.BackHandler
 import androidx.compose.animation.AnimatedVisibility
@@ -188,6 +190,7 @@ fun StudyPlannerScreen(
             ) {
                 // Overview Progress Card
                 item {
+                    Box(modifier = Modifier.staggeredEntrance(0)) {
                     GlassCard(modifier = Modifier.fillMaxWidth()) {
                         Column(
                             modifier = Modifier
@@ -288,10 +291,12 @@ fun StudyPlannerScreen(
                             }
                         }
                     }
+                    }
                 }
 
                 // Tab Row (0: Goals & Subjects, 1: Session Logs, 2: Focus Timer)
                 item {
+                    Box(modifier = Modifier.staggeredEntrance(1)) {
                     TabRow(
                         selectedTabIndex = selectedTab,
                         containerColor = Color.Transparent,
@@ -320,12 +325,14 @@ fun StudyPlannerScreen(
                             icon = { Icon(Icons.Default.Timer, contentDescription = null, modifier = Modifier.size(18.dp)) }
                         )
                     }
+                    }
                 }
 
                 when (selectedTab) {
                     0 -> {
                         // TAB 0: Subject Goals & Filtering
                         item {
+                            Box(modifier = Modifier.staggeredEntrance(2)) {
                             // Subject Filter Chips
                             LazyRow(
                                 modifier = Modifier.fillMaxWidth(),
@@ -348,6 +355,7 @@ fun StudyPlannerScreen(
                                     )
                                 }
                             }
+                            }
                         }
 
                         val filteredSubjects = if (selectedSubjectFilterId == null) {
@@ -358,6 +366,7 @@ fun StudyPlannerScreen(
 
                         if (filteredSubjects.isEmpty()) {
                             item {
+                                Box(modifier = Modifier.staggeredEntrance(3)) {
                                 GlassCard(modifier = Modifier.fillMaxWidth()) {
                                     Column(
                                         modifier = Modifier
@@ -377,9 +386,11 @@ fun StudyPlannerScreen(
                                         )
                                     }
                                 }
+                                }
                             }
                         } else {
-                            items(filteredSubjects) { subject ->
+                            itemsIndexed(filteredSubjects) { idx, subject ->
+                                Box(modifier = Modifier.staggeredEntrance(minOf(idx, 6))) {
                                 val stat = subjectStudyStats.firstOrNull { it.subject.id == subject.id }
                                 val subjectGoals = allGoals.filter { it.subjectId == subject.id }
 
@@ -415,6 +426,7 @@ fun StudyPlannerScreen(
                                         showLogSessionDialog = true
                                     }
                                 )
+                                }
                             }
                         }
                     }
@@ -423,6 +435,7 @@ fun StudyPlannerScreen(
                         // TAB 1: Study Session History / Logs
                         if (allSessions.isEmpty()) {
                             item {
+                                Box(modifier = Modifier.staggeredEntrance(4)) {
                                 GlassCard(modifier = Modifier.fillMaxWidth()) {
                                     Column(
                                         modifier = Modifier
@@ -449,9 +462,11 @@ fun StudyPlannerScreen(
                                         )
                                     }
                                 }
+                                }
                             }
                         } else {
-                            items(allSessions) { session ->
+                            itemsIndexed(allSessions) { idx, session ->
+                                Box(modifier = Modifier.staggeredEntrance(minOf(idx, 6))) {
                                 val subj = allSubjects.firstOrNull { it.id == session.subjectId }
                                 StudySessionLogItem(
                                     session = session,
@@ -461,6 +476,7 @@ fun StudyPlannerScreen(
                                         scope.launch { snackbarHostState.showSnackbar("Removed study session log") }
                                     }
                                 )
+                                }
                             }
                         }
                     }
@@ -468,6 +484,7 @@ fun StudyPlannerScreen(
                     2 -> {
                         // TAB 2: Live Focus Timer / Stopwatch
                         item {
+                            Box(modifier = Modifier.staggeredEntrance(5)) {
                             FocusStopwatchCard(
                                 subjects = allSubjects,
                                 onSaveSession = { subjectId, minutes, topic ->
@@ -483,16 +500,19 @@ fun StudyPlannerScreen(
                                     }
                                 }
                             )
+                            }
                         }
                     }
                 }
 
                 item {
+                    Box(modifier = Modifier.staggeredEntrance(0)) {
                     Spacer(modifier = Modifier.height(16.dp))
                     Box(modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
                         FooterCredit()
                     }
                     Spacer(modifier = Modifier.height(72.dp))
+                    }
                 }
             }
         }
@@ -1280,11 +1300,13 @@ private fun LogStudySessionDialog(
                         listOf(30, 45, 60, 90, 120, 180).forEach { mins ->
                             val label = if (mins < 60) "${mins}m" else "${mins / 60}h${if (mins % 60 > 0) " 30m" else ""}"
                             item {
+                                Box(modifier = Modifier.staggeredEntrance(0)) {
                                 FilterChip(
                                     selected = durationMinutes == mins,
                                     onClick = { durationMinutes = mins },
                                     label = { Text(label) }
                                 )
+                                }
                             }
                         }
                     }

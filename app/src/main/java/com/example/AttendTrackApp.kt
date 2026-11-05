@@ -26,6 +26,14 @@ class AttendTrackApp : Application() {
         repository = AttendanceRepository(database.dao(), this)
 
         createNotificationChannels()
+
+        // Keep the home-screen widget in sync with every attendance change
+        CoroutineScope(Dispatchers.IO).launch {
+            repository.getOverallStat().collect {
+                com.example.widget.AttendanceWidgetProvider.refresh(this@AttendTrackApp)
+            }
+        }
+
         AlarmScheduler.scheduleAllUpcomingClassAlarms(this)
         AlarmScheduler.scheduleEndOfDayReminder(this)
 

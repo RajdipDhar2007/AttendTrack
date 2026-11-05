@@ -1,5 +1,7 @@
 package com.example.ui.screens
 
+import com.example.ui.components.staggeredEntrance
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -251,7 +253,8 @@ fun TimetableScreen(
                     modifier = Modifier.weight(1f),
                     verticalArrangement = Arrangement.spacedBy(12.dp)
                 ) {
-                    items(currentDaySlots) { slot ->
+                    itemsIndexed(currentDaySlots) { idx, slot ->
+                        Box(modifier = Modifier.staggeredEntrance(minOf(idx, 6))) {
                         val sub = allSubjects.firstOrNull { it.id == slot.subjectId }
                         val teach = allTeachers.firstOrNull { it.id == slot.teacherId }
 
@@ -362,10 +365,13 @@ fun TimetableScreen(
                                 }
                             }
                         }
+                        }
                     }
 
                     item {
+                        Box(modifier = Modifier.staggeredEntrance(0)) {
                         Spacer(modifier = Modifier.height(80.dp))
+                        }
                     }
                 }
             }

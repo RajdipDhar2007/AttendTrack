@@ -1,5 +1,6 @@
 package com.example.ui.screens
 
+import com.example.ui.components.staggeredEntrance
 import android.content.Intent
 import android.widget.Toast
 import androidx.compose.foundation.background
@@ -41,6 +42,7 @@ import androidx.compose.material.icons.filled.NotificationsActive
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material.icons.filled.Share
+import androidx.compose.material.icons.filled.PictureAsPdf
 import androidx.compose.material.icons.filled.Upload
 import androidx.compose.material.icons.filled.Warning
 import androidx.compose.material.icons.filled.FileOpen
@@ -147,6 +149,21 @@ fun SettingsScreen(
     var cleanReplaceJsonImport by remember { mutableStateOf(true) }
     var jsonImportFeedback by remember { mutableStateOf<Pair<Boolean, String>?>(null) }
 
+    val pdfExportLauncher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.CreateDocument("application/pdf")
+    ) { uri: Uri? ->
+        uri?.let {
+            scope.launch {
+                val error = viewModel.exportPdf(it)
+                Toast.makeText(
+                    context,
+                    if (error == null) "Attendance report saved as PDF" else "PDF export failed: $error",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+        }
+    }
+
     val jsonFilePickerLauncher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.GetContent()
     ) { uri: Uri? ->
@@ -182,6 +199,7 @@ fun SettingsScreen(
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             item {
+                Box(modifier = Modifier.staggeredEntrance(0)) {
                 Spacer(modifier = Modifier.height(16.dp))
                 Text(
                     text = "App Settings",
@@ -193,10 +211,12 @@ fun SettingsScreen(
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.7f)
                 )
+                }
             }
 
             // Student Profile Card
             item {
+                Box(modifier = Modifier.staggeredEntrance(1)) {
                 GlassCard(modifier = Modifier.fillMaxWidth()) {
                     Column {
                         Row(
@@ -233,10 +253,12 @@ fun SettingsScreen(
                         )
                     }
                 }
+                }
             }
 
             // Theme & Aesthetic Customizer (6 Palettes)
             item {
+                Box(modifier = Modifier.staggeredEntrance(2)) {
                 GlassCard(modifier = Modifier.fillMaxWidth()) {
                     Column {
                         Row(verticalAlignment = Alignment.CenterVertically) {
@@ -324,10 +346,12 @@ fun SettingsScreen(
                         }
                     }
                 }
+                }
             }
 
             // Attendance Reminders & Local Push Notifications
             item {
+                Box(modifier = Modifier.staggeredEntrance(3)) {
                 GlassCard(modifier = Modifier.fillMaxWidth()) {
                     Column {
                         Row(verticalAlignment = Alignment.CenterVertically) {
@@ -467,10 +491,12 @@ fun SettingsScreen(
                         }
                     }
                 }
+                }
             }
 
             // Cloud-Based Backup & Restore (JSON Export / Import)
             item {
+                Box(modifier = Modifier.staggeredEntrance(4)) {
                 GlassCard(modifier = Modifier.fillMaxWidth()) {
                     Column {
                         Row(
@@ -663,12 +689,35 @@ fun SettingsScreen(
                                 }
                             }
                         }
+
+                        Spacer(modifier = Modifier.height(10.dp))
+
+                        // Attendance report as a shareable PDF
+                        Box(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .clip(RoundedCornerShape(12.dp))
+                                .background(MaterialTheme.colorScheme.primary.copy(alpha = 0.15f))
+                                .clickable {
+                                    pdfExportLauncher.launch("AttendTrack_Attendance_${java.time.LocalDate.now()}.pdf")
+                                }
+                                .padding(vertical = 10.dp),
+                            contentAlignment = Alignment.Center
+                        ) {
+                            Row(verticalAlignment = Alignment.CenterVertically) {
+                                Icon(Icons.Default.PictureAsPdf, contentDescription = null, tint = MaterialTheme.colorScheme.primary, modifier = Modifier.size(15.dp))
+                                Spacer(modifier = Modifier.width(6.dp))
+                                Text("Export Attendance as PDF", style = MaterialTheme.typography.bodyMedium, fontWeight = FontWeight.SemiBold, color = MaterialTheme.colorScheme.primary)
+                            }
+                        }
                     }
+                }
                 }
             }
 
             // Danger Zone: Reset Operations
             item {
+                Box(modifier = Modifier.staggeredEntrance(5)) {
                 GlassCard(modifier = Modifier.fillMaxWidth()) {
                     Column {
                         Row(verticalAlignment = Alignment.CenterVertically) {
@@ -712,10 +761,12 @@ fun SettingsScreen(
                         }
                     }
                 }
+                }
             }
 
             // Branded About Card & Footer
             item {
+                Box(modifier = Modifier.staggeredEntrance(0)) {
                 Spacer(modifier = Modifier.height(10.dp))
                 GlassCard(modifier = Modifier.fillMaxWidth()) {
                     Row(
@@ -766,6 +817,7 @@ fun SettingsScreen(
                     FooterCredit()
                 }
                 Spacer(modifier = Modifier.height(72.dp))
+                }
             }
         }
 
