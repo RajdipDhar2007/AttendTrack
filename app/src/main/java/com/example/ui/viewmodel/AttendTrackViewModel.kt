@@ -113,7 +113,8 @@ class AttendTrackViewModel(application: Application) : AndroidViewModel(applicat
     // Today's schedule
     val todayDate: LocalDate = LocalDate.now()
     val todaySchedule: StateFlow<List<SlotWithDetails>> = repo.getTodayScheduleWithDetails(todayDate)
-        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList())
+        // Eagerly: the countdown timer reads .value without collecting, so WhileSubscribed never started it
+        .stateIn(viewModelScope, SharingStarted.Eagerly, emptyList())
 
     // Weekly timetable selected day: 1 = Mon .. 7 = Sun
     private val _selectedTimetableDay = MutableStateFlow(todayDate.dayOfWeek.value)
@@ -229,11 +230,11 @@ class AttendTrackViewModel(application: Application) : AndroidViewModel(applicat
                 var currentFound: ActiveClassInfo? = null
                 var nextFound: SlotWithDetails? = null
 
-                for (item in schedule) {
+                for (item in schedule.sortedBy { it.slot.getStartLocalTime() }) {
                     val start = item.slot.getStartLocalTime()
                     val end = item.slot.getEndLocalTime()
 
-                    if (now.isAfter(start) && now.isBefore(end)) {
+                    if (!now.isBefore(start) && now.isBefore(end)) {
                         val totalSecs = Duration.between(start, end).seconds.coerceAtLeast(1)
                         val elapsedSecs = Duration.between(start, now).seconds
                         val remainingSecs = Duration.between(now, end).seconds
