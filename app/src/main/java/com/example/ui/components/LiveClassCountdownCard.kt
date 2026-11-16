@@ -74,11 +74,10 @@ private fun fmt(totalSeconds: Long): String {
  */
 @Composable
 fun LiveClassCountdownCard(
-    activeClass: ActiveClassInfo?,
-    nextClass: SlotWithDetails?,
+    schedule: List<SlotWithDetails>,
     modifier: Modifier = Modifier
 ) {
-    // Own 1s ticker so the "starts in" countdown is live even when no class is active
+    // Own 1s ticker: the card derives live/next class itself from today's schedule
     var now by remember { mutableStateOf(LocalTime.now()) }
     LaunchedEffect(Unit) {
         while (true) {
@@ -86,6 +85,24 @@ fun LiveClassCountdownCard(
             delay(1000)
         }
     }
+
+    val sorted = remember(schedule) { schedule.sortedBy { it.slot.getStartLocalTime() } }
+    val activeClass: ActiveClassInfo? = sorted.firstOrNull {
+        !now.isBefore(it.slot.getStartLocalTime()) && now.isBefore(it.slot.getEndLocalTime())
+    }?.let { item ->
+        val start = item.slot.getStartLocalTime()
+        val end = item.slot.getEndLocalTime()
+        val total = Duration.between(start, end).seconds.coerceAtLeast(1)
+        val elapsed = Duration.between(start, now).seconds
+        ActiveClassInfo(
+            slot = item.slot,
+            subject = item.subject,
+            teacher = item.teacher,
+            remainingSeconds = Duration.between(now, end).seconds,
+            progress = (elapsed.toFloat() / total.toFloat()).coerceIn(0f, 1f)
+        )
+    }
+    val nextClass: SlotWithDetails? = sorted.firstOrNull { now.isBefore(it.slot.getStartLocalTime()) }
 
     // 0 = live, 1 = upcoming, 2 = done for today
     val mode = when {
