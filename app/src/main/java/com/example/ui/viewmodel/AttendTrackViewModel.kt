@@ -43,14 +43,6 @@ import kotlin.math.ceil
 import kotlin.math.floor
 import kotlin.math.max
 
-data class ActiveClassInfo(
-    val slot: TimetableSlot,
-    val subject: Subject,
-    val teacher: Teacher?,
-    val remainingSeconds: Long,
-    val progress: Float // 0f to 1f
-)
-
 data class ChatMessage(
     val text: String,
     val isUser: Boolean,
@@ -123,14 +115,6 @@ class AttendTrackViewModel(application: Application) : AndroidViewModel(applicat
     fun setSelectedTimetableDay(day: Int) {
         _selectedTimetableDay.value = day
     }
-
-    // Active ongoing class countdown
-    private val _activeClass = MutableStateFlow<ActiveClassInfo?>(null)
-    val activeClass: StateFlow<ActiveClassInfo?> = _activeClass.asStateFlow()
-
-    // Next upcoming class today
-    private val _nextClass = MutableStateFlow<SlotWithDetails?>(null)
-    val nextClass: StateFlow<SlotWithDetails?> = _nextClass.asStateFlow()
 
     // Undo snackbar message flow
     private val _undoMessage = MutableSharedFlow<String>()
@@ -216,47 +200,6 @@ class AttendTrackViewModel(application: Application) : AndroidViewModel(applicat
                 repo.saveProfile(Profile(id = 1, hasCompletedOnboarding = false))
             }
             repo.cleanAndDeduplicateSubjects()
-        }
-        startClassCountdownTimer()
-    }
-
-    // Loop every second to update ongoing class and next class
-    private fun startClassCountdownTimer() {
-        viewModelScope.launch(Dispatchers.Default) {
-            while (isActive) {
-                val now = LocalTime.now()
-                val schedule = todaySchedule.value
-
-                var currentFound: ActiveClassInfo? = null
-                var nextFound: SlotWithDetails? = null
-
-                for (item in schedule.sortedBy { it.slot.getStartLocalTime() }) {
-                    val start = item.slot.getStartLocalTime()
-                    val end = item.slot.getEndLocalTime()
-
-                    if (!now.isBefore(start) && now.isBefore(end)) {
-                        val totalSecs = Duration.between(start, end).seconds.coerceAtLeast(1)
-                        val elapsedSecs = Duration.between(start, now).seconds
-                        val remainingSecs = Duration.between(now, end).seconds
-                        val progress = (elapsedSecs.toFloat() / totalSecs.toFloat()).coerceIn(0f, 1f)
-
-                        currentFound = ActiveClassInfo(
-                            slot = item.slot,
-                            subject = item.subject,
-                            teacher = item.teacher,
-                            remainingSeconds = remainingSecs,
-                            progress = progress
-                        )
-                    } else if (now.isBefore(start) && nextFound == null) {
-                        nextFound = item
-                    }
-                }
-
-                _activeClass.value = currentFound
-                _nextClass.value = nextFound
-
-                delay(1000)
-            }
         }
     }
 

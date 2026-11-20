@@ -94,9 +94,6 @@ fun DashboardScreen(
     val context = LocalContext.current
     val profile by viewModel.profile.collectAsState()
     val overallStat by viewModel.overallStat.collectAsState()
-    // Same query that renders the class list below, always for the real current date
-    val liveTodaySchedule by remember(LocalDate.now()) { viewModel.getScheduleForDate(LocalDate.now()) }
-        .collectAsState(initial = emptyList<SlotWithDetails>())
     val subjectStats by viewModel.subjectStats.collectAsState()
     val allStudyGoals by viewModel.allStudyGoals.collectAsState()
 
@@ -434,15 +431,6 @@ fun DashboardScreen(
                         }
                     }
                 }
-                }
-            }
-
-            // Live class / next class animated countdown
-            item {
-                Box(modifier = Modifier.staggeredEntrance(0)) {
-                    com.example.ui.components.LiveClassCountdownCard(
-                        schedule = liveTodaySchedule
-                    )
                 }
             }
 

@@ -116,7 +116,6 @@
 - Local-first Room database that works offline
 - JSON export/import, cloud backup and restore, JSON timetable import
 - **PDF export**: a printable attendance report (summary, subject-wise table and full class log) from Settings
-- **Live class countdown**: a ring that fills as the current class runs, with a ticking timer, then a "starts in" countdown for the next class
 - **Home-screen widget**: overall %, safe bunks or classes needed, updated live as you mark classes
 
 ### 🚀 First launch & importing your timetable
